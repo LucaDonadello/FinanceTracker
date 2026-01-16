@@ -1,7 +1,12 @@
-from pydantic_settings import BaseSettings
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
-    app_name: str = "Finance Tracker API"
-    debug: bool = True
+    APP_NAME: str = ""
+    VERSION: str = ""
+    DATABASE_URL: str = ""
+    SECRET_KEY: str = ""
+    DEBUG: bool = False
+
+    model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8")
 
 settings = Settings()
