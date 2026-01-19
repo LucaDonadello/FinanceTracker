@@ -1,5 +1,6 @@
-from sqlalchemy import String, Boolean
+from sqlalchemy import String, Boolean, DateTime
 from sqlalchemy.orm import Mapped, mapped_column, relationship
+from datetime import datetime, timezone
 
 from app.db.base import Base
 
@@ -26,14 +27,16 @@ class User(Base):
         default=True
     )
 
-    created_at: Mapped[str] = mapped_column(
-        String,
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True),
+        default=lambda: datetime.now(tz=timezone.utc),
         nullable=False
     )
 
-    # Relationships (future)
-    transactions = relationship(
-        "Transaction",
-        back_populates="user",
-        cascade="all, delete-orphan"
-    )
+    # Removed relationships for simplicity -- testing purposes
+    # Relationships
+    # transactions = relationship(
+    #     "Transaction",
+    #     back_populates="user",
+    #     cascade="all, delete-orphan"
+    # )
