@@ -2,12 +2,13 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from app.core.config import settings
 
-# Use the DATABASE_URL from .env
+# Validation
 engine = create_engine(
     settings.DATABASE_URL,
     pool_pre_ping=True
 )
 
+# Create a session local class
 SessionLocal = sessionmaker(
     autocommit=False,
     autoflush=False,
