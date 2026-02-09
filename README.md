@@ -19,6 +19,6 @@ A personal project to track personal expenses, categorize spending, and visualiz
 ## Getting Started
 1. Clone repo
 2. Create virtual environment: `python -m venv venv`
-3. Activate venv: `source venv/bin/activate` or `venv\Scripts\activate`
+3. Activate venv: `source venv/Scripts/activate` or `venv\Scripts\activate`
 4. Install dependencies: `pip install -r requirements.txt`
 5. Run server: `uvicorn app.main:app --reload`
