@@ -1,4 +1,4 @@
-from pydantic import BaseModel, EmailStr, field_validator
+from pydantic import BaseModel, EmailStr, Field, field_validator
 from datetime import datetime
 
 class UserBase(BaseModel):
@@ -6,7 +6,7 @@ class UserBase(BaseModel):
     is_active: bool = True
 
 class UserCreate(UserBase):
-    password: str
+    password: str = Field(min_length=8)
 
 class UserRead(UserBase):
     id: int
