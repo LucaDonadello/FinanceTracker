@@ -1,0 +1,32 @@
+JWT Token Notes:
+
+JWT Tokens -- The server gives the client a signed token, and the client sends it bck on each request
+
+Why using this?
+
+Stateless: Server doesn't need to store session data
+Portable: Works across multiple services
+Secure: Cannot be tampered
+
+In this case JWT allows the user to log in and then call protected API routes by sending the token
+
+Update the schema:
+Inside User.py --> in schema need to add login class to take care of the login implementation
+
+Why schema?
+1) Validation; it ensures the request has the correct structure
+2) Documentation
+3) Serialization
+
+Now, when a client sends a POST request to /login, FastAPI will:
+
+- Parse the JSON request.
+- Validate it against UserLogin.
+- Give you a clean Python object in your endpoint
+
+Analogy:
+
+Think of the schema as a form:
+
+The form says: “I accept an email and a password, nothing else.”
+FastAPI checks the user input matches the form before your logic even runs.

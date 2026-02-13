@@ -1,0 +1,24 @@
+# Virtual environments
+venv/
+.env
+.env.*
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# IDEs / Editors
+.idea/
+.vscode/
+
+# Logs, temp files
+*.log
+*.sqlite3
+*.db
+*.DS_Store
+
+# Project notes or commands (optional)
+COMMANDS.txt
+notes.txt
