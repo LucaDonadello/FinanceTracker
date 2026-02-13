@@ -22,3 +22,8 @@ def create_user(db: Session, user_in: UserCreate) -> User:
 def get_user_by_email(db: Session, email: str) -> User | None:
     stmt = select(User).where(User.email == email)
     return db.execute(stmt).scalar_one_or_none()
+
+
+# Get user by ID for authentication and validation purposes
+def get_user(db: Session, user_id: int) -> User | None:
+    return db.query(User).filter(User.id == user_id).first()
