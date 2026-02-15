@@ -4,6 +4,9 @@ from app.db.base import Base
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 from alembic import context
+from app.db.models.user import User
+
+
 
 import sys
 from pathlib import Path
