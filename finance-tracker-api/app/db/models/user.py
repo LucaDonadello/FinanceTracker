@@ -1,6 +1,11 @@
+from typing import TYPE_CHECKING
 from sqlalchemy import String, Boolean, DateTime
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from datetime import datetime, timezone
+from app.db.models.transaction import Transaction
+if TYPE_CHECKING:
+    from app.db.models.account import Account
+
 
 from app.db.base import Base
 
@@ -33,10 +38,15 @@ class User(Base):
         nullable=False
     )
 
-    # Removed relationships for simplicity -- testing purposes
-    # Relationships
-    # transactions = relationship(
-    #     "Transaction",
-    #     back_populates="user",
-    #     cascade="all, delete-orphan"
-    # )
+    account: Mapped["Account"] = relationship(
+        "Account",
+        back_populates="user",
+        uselist=False,
+        cascade="all, delete-orphan"
+    )
+    
+    transactions = relationship(
+        "Transaction",
+        back_populates="user",
+        cascade="all, delete-orphan"
+    )

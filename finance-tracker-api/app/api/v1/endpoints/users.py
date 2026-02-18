@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
-from app.schemas.user import Token, UserCreate, UserRead, UserLogin
+from app.schemas.user import Token, UserCreate, UserRead, UserLogin, UserWithToken
 from app.crud.user import create_user, get_user_by_email
 from app.db.session import get_db
 from app.core.security import verify_password
@@ -13,23 +13,38 @@ router = APIRouter()
 # User registration
 # ------------------------------
 @router.post(
-    "/",
-    response_model=UserRead,
+    "/register",
+    response_model=UserWithToken,
     status_code=status.HTTP_201_CREATED
 )
-def register_user(
-    user_in: UserCreate,
-    db: Session = Depends(get_db)
-):
-    # Check if user already exists
+def register_user(user_in: UserCreate, db: Session = Depends(get_db)):
+    # Check if the email is already registered
     existing_user = get_user_by_email(db, user_in.email)
     if existing_user:
         raise HTTPException(
             status_code=status.HTTP_409_CONFLICT,
             detail="Email already registered"
         )
-    return create_user(db, user_in)
 
+    try:
+        # Create user and linked account in a single transaction
+        user = create_user(db, user_in)  # your modified create_user already adds user + account
+
+        # Create JWT token
+        access_token = create_access_token(data={"sub": str(user.id)})
+
+        # Return both user and token
+        return {
+            "user": UserRead.from_orm(user),
+            "token": Token(access_token=access_token)
+        }
+
+    except Exception as e:
+        db.rollback()  # undo any partial changes
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Failed to register user: {e}"
+        )
 
 # ------------------------------
 # User login
