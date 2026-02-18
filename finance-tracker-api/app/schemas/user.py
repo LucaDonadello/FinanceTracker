@@ -22,7 +22,7 @@ class UserRead(UserBase):
             import re
             v = re.sub(r'([+-]\d{2})$', r'\1:00', v)
         return v
-
+    
 class UserLogin(BaseModel):
     email: EmailStr
     password: str
@@ -30,4 +30,7 @@ class UserLogin(BaseModel):
 class Token(BaseModel):
     access_token: str
     token_type: str = "bearer"
-    
+
+class UserWithToken(BaseModel):
+    user: UserRead
+    token: Token
