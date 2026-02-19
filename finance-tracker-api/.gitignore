@@ -22,3 +22,4 @@ __pycache__/
 # Project notes or commands (optional)
 COMMANDS.txt
 notes.txt
+*.docx
