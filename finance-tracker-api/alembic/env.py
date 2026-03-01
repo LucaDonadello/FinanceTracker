@@ -6,6 +6,8 @@ from sqlalchemy import pool
 from alembic import context
 from app.db.models.user import User
 from app.db.models.account import Account
+from app.db.models.financial_report import FinancialReport
+from app.db.models.transaction import UserTransaction
 
 
 import sys
