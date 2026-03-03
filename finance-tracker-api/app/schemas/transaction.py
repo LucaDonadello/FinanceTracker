@@ -5,6 +5,7 @@ from datetime import datetime
 from decimal import Decimal
 
 class TransactionCreate(BaseModel):
+    report_id: int
     amount: Decimal
     category: str
     description: str | None = None
