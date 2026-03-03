@@ -2,9 +2,13 @@ from typing import TYPE_CHECKING
 from sqlalchemy import String, Boolean, DateTime
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from datetime import datetime, timezone
-from app.db.models.transaction import Transaction
+
+# import transaction model at runtime so relationship resolution works
+from app.db.models.transaction import UserTransaction
+
 if TYPE_CHECKING:
     from app.db.models.account import Account
+    from app.db.models.financial_report import FinancialReport
 
 
 from app.db.base import Base
@@ -45,8 +49,15 @@ class User(Base):
         cascade="all, delete-orphan"
     )
     
-    transactions = relationship(
-        "Transaction",
+    # a user may have many financial reports
+    financial_reports: Mapped[list["FinancialReport"]] = relationship(
+        "FinancialReport",
+        back_populates="user",
+        cascade="all, delete-orphan"
+    )
+    
+    transactions: Mapped[list["UserTransaction"]] = relationship(
+        UserTransaction,
         back_populates="user",
         cascade="all, delete-orphan"
     )

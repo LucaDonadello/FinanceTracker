@@ -28,7 +28,7 @@ def register_user(user_in: UserCreate, db: Session = Depends(get_db)):
 
     try:
         # Create user and linked account in a single transaction
-        user = create_user(db, user_in)  # your modified create_user already adds user + account
+        user = create_user(db, user_in)  # modified create_user already adds user + account
 
         # Create JWT token
         access_token = create_access_token(data={"sub": str(user.id)})
