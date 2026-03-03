@@ -1,4 +1,4 @@
-# Finance Tracker API
+# Finance Tracker
 
 A comprehensive personal finance management system built with **FastAPI** and **PostgreSQL**. This API enables users to track expenses, manage multiple accounts, and analyze spending patterns with secure authentication and role-based access control.
 
