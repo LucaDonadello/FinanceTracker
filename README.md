@@ -4,7 +4,7 @@ A comprehensive personal finance management system built with **FastAPI** and **
 
 **Project Status:** In Development  
 **Python Version:** 3.12+  
-**Last Updated:** February 2026
+**Last Updated:** March 2026
 
 ---
 
