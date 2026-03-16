@@ -24,3 +24,7 @@ __pycache__/
 COMMANDS.txt
 notes.txt
 *.docx
+
+# Ignore the upload directory content, but keep the directory itself
+app/uploads/*
+!app/uploads/.gitkeep
