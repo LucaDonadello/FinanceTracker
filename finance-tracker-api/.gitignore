@@ -28,3 +28,11 @@ notes.txt
 # Ignore the upload directory content, but keep the directory itself
 app/uploads/*
 !app/uploads/.gitkeep
+
+# Ignore pytest cache
+.pytest_cache/
+
+# Ignore VS Code settings
+.vscode/*
+!.vscode/launch.json
+!.vscode/settings.json
