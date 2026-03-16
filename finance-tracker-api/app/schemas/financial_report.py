@@ -3,7 +3,7 @@
 from pydantic import BaseModel
 from datetime import datetime
 
-# Post request body for creating a financial report
+# POST request body for creating a financial report
 class FinancialReportCreate(BaseModel):
     report_name: str
     description: str | None = None
