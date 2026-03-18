@@ -1,0 +1,70 @@
+# =========================
+# Logs & Debug Files
+# =========================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# =========================
+# Node / Frontend (Vite, React)
+# =========================
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# =========================
+# Python / Backend
+# =========================
+backend/venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# =========================
+# Environment Variables (hidden files)
+# =========================
+.env
+.env.*
+
+# =========================
+# Databases & Temp Files
+# =========================
+*.sqlite3
+*.db
+
+# =========================
+# Uploads (ignore contents, keep folder)
+# =========================
+backend/app/uploads/*
+!backend/app/uploads/.gitkeep
+
+# =========================
+# IDE / Editor Settings
+# =========================
+.idea/
+
+# VS Code (ignore everything except selected configs)
+.vscode/*
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/settings.json
+
+# =========================
+# OS Files
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Misc / Notes
+# =========================
+COMMANDS.txt
+notes.txt
+*.docx
