@@ -32,6 +32,8 @@ __pycache__/
 # =========================
 .env
 .env.*
+env
+
 
 # =========================
 # Databases & Temp Files
@@ -66,5 +68,6 @@ Thumbs.db
 # Misc / Notes
 # =========================
 COMMANDS.txt
+Documentation.docx
 notes.txt
 *.docx
